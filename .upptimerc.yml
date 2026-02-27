@@ -1,0 +1,66 @@
+owner: MoriProject
+repo: status
+
+sites:
+  - name: API
+    url: https://api.bizmori.com/api/v2/health
+    expectedStatusCodes:
+      - 200
+    icon: https://raw.githubusercontent.com/MoriProject/status/master/.github/assets/api.svg
+
+  - name: API (Detailed)
+    url: https://api.bizmori.com/api/v2/health/detailed
+    expectedStatusCodes:
+      - 200
+    __dangerous__body_degraded: '"degraded"'
+
+  - name: Dashboard
+    url: https://app.bizmori.com
+    expectedStatusCodes:
+      - 200
+      - 301
+      - 302
+
+  - name: Documentation
+    url: https://docs.bizmori.com
+    expectedStatusCodes:
+      - 200
+      - 301
+      - 302
+
+status-website:
+  cname: status.bizmori.com
+  logoUrl: https://raw.githubusercontent.com/MoriProject/status/master/.github/assets/logo.svg
+  name: Mori Status
+  introTitle: "**Mori** 서비스 상태 현황"
+  introMessage: 실시간 서비스 가동 현황 및 인시던트 이력을 확인할 수 있습니다.
+  theme: light
+  navbar:
+    - title: Home
+      href: /
+    - title: GitHub
+      href: https://github.com/$OWNER/$REPO
+
+workflowSchedule:
+  - "*/5 * * * *"
+
+i18n:
+  activeIncidents: 진행 중인 인시던트
+  pastIncidents: 과거 인시던트
+  pastIncidentsResolved: 해결됨
+  liveStatus: 실시간 상태
+  allSystemsOperational: 모든 시스템이 정상 운영 중입니다
+  notAllSystemsOperational: 일부 시스템에 문제가 발생했습니다
+  degradedPerformance: 성능 저하
+  completeOutage: 서비스 중단
+  partialOutage: 부분 장애
+
+commitMessages:
+  statusChange: "$SITE_NAME 상태 변경: $STATUS"
+  readmeRecreated: "README 재생성"
+  summaryRecreated: "상태 요약 재생성"
+
+notifications:
+  - type: slack
+    channel: C_INCIDENTS
+    webhookUrl: $SLACK_WEBHOOK_URL

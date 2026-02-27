@@ -1,0 +1,26 @@
+name: Setup CI
+on:
+  push:
+    branches:
+      - master
+      - main
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Upptime
+        uses: upptime/uptime-monitor@v1.38.3
+        with:
+          command: "readme"
+      - name: Run Upptime
+        uses: upptime/uptime-monitor@v1.38.3
+        with:
+          command: "site"
+      - name: Run Upptime
+        uses: upptime/uptime-monitor@v1.38.3
+        with:
+          command: "graphs"
+      - name: Run Upptime
+        uses: upptime/uptime-monitor@v1.38.3
+        with:
+          command: "summary"

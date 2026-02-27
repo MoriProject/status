@@ -1,0 +1,25 @@
+name: Uptime CI
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+jobs:
+  uptime:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Upptime
+        uses: upptime/uptime-monitor@v1.38.3
+        with:
+          command: "readme"
+      - name: Run Upptime
+        uses: upptime/uptime-monitor@v1.38.3
+        with:
+          command: "site"
+      - name: Run Upptime
+        uses: upptime/uptime-monitor@v1.38.3
+        with:
+          command: "graphs"
+      - name: Run Upptime
+        uses: upptime/uptime-monitor@v1.38.3
+        with:
+          command: "summary"
