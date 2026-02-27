@@ -8,19 +8,27 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-      - name: Run Upptime
+      - name: Run Upptime - readme
         uses: upptime/uptime-monitor@v1.41.0
         with:
           command: "readme"
-      - name: Run Upptime
+        env:
+          GH_PAT: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run Upptime - site
         uses: upptime/uptime-monitor@v1.41.0
         with:
           command: "site"
-      - name: Run Upptime
+        env:
+          GH_PAT: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run Upptime - graphs
         uses: upptime/uptime-monitor@v1.41.0
         with:
           command: "graphs"
-      - name: Run Upptime
+        env:
+          GH_PAT: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run Upptime - summary
         uses: upptime/uptime-monitor@v1.41.0
         with:
           command: "summary"
+        env:
+          GH_PAT: ${{ secrets.GITHUB_TOKEN }}
